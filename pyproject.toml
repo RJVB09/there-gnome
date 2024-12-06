@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "there-gnome"
+version = "0.1.0"
+description = ""
+authors = ["RJVB09 <rjvb09@ziggo.nl>"]
+readme = "README.md"
+packages = [{include = "there_gnome", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.13"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
