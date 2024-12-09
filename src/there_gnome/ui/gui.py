@@ -277,14 +277,14 @@ class Ui_MainWindow(object):
         # setupUi
 
         def retranslateUi(self, MainWindow):
-                MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Pythondaq - Diode experiment", None))
-                self.label_2.setText(QCoreApplication.translate("MainWindow", u"THERE-GNOME", None))
-                self.lengthLabel.setText(QCoreApplication.translate("MainWindow", u"Note length (mm)", None))
-                self.offsetLabel.setText(QCoreApplication.translate("MainWindow", u"Offset", None))
-                self.invertedToggle.setText(QCoreApplication.translate("MainWindow", u"Inverted", None))
-                self.rangeLabel.setText(QCoreApplication.translate("MainWindow", u"Range (mm)", None))
-                self.label.setText(QCoreApplication.translate("MainWindow", u"Volume falloff", None))
-                self.stopButton.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
-                self.playButton.setText(QCoreApplication.translate("MainWindow", u"Play", None))
+                MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"THERE-GNOME 第一个版本 (Premium-edition)", None))
+                self.label_2.setText(QCoreApplication.translate("MainWindow", u"这个应用程序有三个星星在百度上， THERE-GNOME 第一个版本", None))
+                self.lengthLabel.setText(QCoreApplication.translate("MainWindow", u"Note length (mm) (وای فای رایگان)", None))
+                self.offsetLabel.setText(QCoreApplication.translate("MainWindow", u"Offset (إزاحة)", None))
+                self.invertedToggle.setText(QCoreApplication.translate("MainWindow", u"Inverted (倒了)", None))
+                self.rangeLabel.setText(QCoreApplication.translate("MainWindow", u"Range (mm) (范围)", None))
+                self.label.setText(QCoreApplication.translate("MainWindow", u"Volume falloff (音量)", None))
+                self.stopButton.setText(QCoreApplication.translate("MainWindow", u"Stop (停止)", None))
+                self.playButton.setText(QCoreApplication.translate("MainWindow", u"Start (开始)", None))
         # retranslateUi
 
