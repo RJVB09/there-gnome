@@ -9,13 +9,12 @@ import numpy as np
 
 from pysinewave import SineWave
 
-arduino = ser.Serial(port="COM4", baudrate=9600, timeout=0.1)
 
 sinewave = SineWave(pitch = 12, pitch_per_second = 1000)
 
 playing = False
 
-sinewave.play()
+#sinewave.play()
 
 def distance_to_pitch(distance, length, offset, flip):
     if flip:
@@ -24,7 +23,7 @@ def distance_to_pitch(distance, length, offset, flip):
         return int(distance / length + offset)
 
 
-while 1:
+while False:
 
     data = arduino.readline()
 
@@ -58,6 +57,13 @@ class UserInterface(QtWidgets.QMainWindow):
         # Prevent saving nothing
         self.experiment_ran = False
         self.measurement_running = False  # Flag to track if measurement is running
+
+        self.pitch_arduino = ser.Serial(port="COM4", baudrate=9600, timeout=0.1)
+        #self.volume_arduino = ser.Serial(port="COM4", baudrate=9600, timeout=0.1)
+
+        self.sinewave = SineWave(pitch = 12, pitch_per_second = 1000)
+
+        self.playing = False
         
         # Use the UI created in the designer
         self.ui = Ui_MainWindow()

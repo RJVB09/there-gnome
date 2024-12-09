@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="Images">
+    <file>gnomelazer_eyes.png</file>
+    <file>gnomenobutt.jpg</file>
+    <file>gnome.png</file>
+    <file>gnomebutt.jpg</file>
+  </qresource>
+</RCC>
