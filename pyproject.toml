@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "there_gnome", from = "src"}]
 
 [tool.poetry.dependencies]
-python = "^3.13"
+python = ">=3.13,<3.14"
 pyvisa = "^1.14.1"
 pyserial = "^3.5"
 pyvisa-py = "^0.7.2"
@@ -17,6 +17,7 @@ pyqt6 = "^6.7.1"
 pygame = "^2.6.1"
 sounddevice = "^0.5.1"
 pysinewave = "^0.0.7"
+pyside6 = "^6.8.1"
 
 
 [build-system]

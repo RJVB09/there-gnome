@@ -1,5 +1,11 @@
 import matplotlib.pyplot as plt
 import serial as ser
+import sys
+from PySide6 import QtWidgets, QtCore
+from PySide6.QtCore import Slot
+from there_gnome.ui.gui import Ui_MainWindow
+import pyqtgraph as pg
+import numpy as np
 
 from pysinewave import SineWave
 
@@ -10,6 +16,13 @@ sinewave = SineWave(pitch = 12, pitch_per_second = 1000)
 playing = False
 
 sinewave.play()
+
+def distance_to_pitch(distance, length, offset, flip):
+    if flip:
+        return int(-distance / length + offset - 1)
+    else:
+        return int(distance / length + offset)
+
 
 while 1:
 
@@ -24,7 +37,6 @@ while 1:
     #sinewave.set_frequency(distance_mm + 200)
 
     print(distance_mm)
-    # print(int(800.0/1500.0 * int(decoded_data) + 200.0))
 
 
 # print(rm.list_resources())
@@ -35,3 +47,33 @@ while 1:
 # print(device.query(""))
 
 # rm.close()
+
+
+class UserInterface(QtWidgets.QMainWindow):
+    def __init__(self):
+
+        # Call the inherited init.
+        super().__init__()
+
+        # Prevent saving nothing
+        self.experiment_ran = False
+        self.measurement_running = False  # Flag to track if measurement is running
+        
+        # Use the UI created in the designer
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+    
+
+
+
+def main():
+    pg.setConfigOption("background", "#161616")
+    pg.setConfigOption("foreground", "w")
+    app = QtWidgets.QApplication(sys.argv)
+    ui = UserInterface()
+    ui.show()
+    sys.exit(app.exec())
+
+
+if __name__ == "__main__":
+    main()  
