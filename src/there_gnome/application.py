@@ -7,6 +7,7 @@ from PySide6 import QtWidgets
 from PySide6.QtCore import Slot
 import pyqtgraph as pg
 from there_gnome.ui.gui import Ui_MainWindow
+from there_gnome.notes import get_note
 
 # Main class for the user interface
 class UserInterface(QtWidgets.QMainWindow):
@@ -21,7 +22,12 @@ class UserInterface(QtWidgets.QMainWindow):
         self.playing = False
 
         # Serial communication setup
-        self.pitch_arduino = ser.Serial(port="COM4", baudrate=9600, timeout=0.1)
+        self.pitch_arduino = ser.Serial(port="COM9", baudrate=9600, timeout=0.1)
+
+        self.volume_control = False
+
+        if self.volume_control:
+            self.volume_arduino = ser.Serial(port="COM4", baudrate=9600, timeout=0.1)
 
         # SineWave setup for sound generation
         self.sinewave = SineWave(pitch=12, pitch_per_second=1000, decibels=0, decibels_per_second=10000)
@@ -93,8 +99,14 @@ class UserInterface(QtWidgets.QMainWindow):
         while self.app_running:
             try:
                 # Read and decode data from Arduino
-                data = self.pitch_arduino.readline()
-                pitch_distance_mm = int(data.decode("utf-8"))
+                data_pitch = self.pitch_arduino.readline()
+                pitch_distance_mm = int(data_pitch.decode("utf-8"))
+
+                volume = 1
+                if self.volume_control:
+                    data_volume = self.volume_arduino.readline()
+                    volume_distance_mm = int(data_volume.decode("utf-8"))
+                    volume = self.distance_to_volume(volume_distance_mm)
 
                 # Update range state and UI if range changes
                 if self.in_range != (pitch_distance_mm <= self.range) and self.playing:
@@ -103,9 +115,11 @@ class UserInterface(QtWidgets.QMainWindow):
                 self.in_range = pitch_distance_mm <= self.range
 
                 # Adjust pitch and volume based on distance
-                out_of_range_multiplier = 10 ** -100 if not self.in_range else 1
+                out_of_range_multiplier = 0 if not self.in_range else 1
                 self.sinewave.set_pitch(self.distance_to_pitch(pitch_distance_mm))
-                self.sinewave.set_volume(np.log2(1 * out_of_range_multiplier))
+                self.sinewave.set_volume(np.log2(volume * out_of_range_multiplier + 10 ** -100))
+
+                self.ui.toneDisplay.setText(get_note(self.distance_to_pitch(pitch_distance_mm)))
 
             except (ValueError, UnicodeDecodeError):
                 # Handle invalid or noisy data gracefully

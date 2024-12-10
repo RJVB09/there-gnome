@@ -72,17 +72,39 @@ border-image: url(:/Images/gnomenobutt.jpg) 0 0 0 0 stretch stretch;</string>
            </widget>
           </item>
           <item>
-           <widget class="PlotWidget" name="plot_widget">
-            <property name="minimumSize">
-             <size>
-              <width>650</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(65, 111, 120, 255));</string>
-            </property>
-           </widget>
+           <layout class="QVBoxLayout" name="verticalLayout_9">
+            <item>
+             <widget class="QLabel" name="toneDisplay">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: bold 30pt &quot;Comic Sans MS&quot;;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string>C4</string>
+              </property>
+              <property name="textFormat">
+               <enum>Qt::TextFormat::PlainText</enum>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="PlotWidget" name="plot_widget">
+              <property name="minimumSize">
+               <size>
+                <width>650</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(65, 111, 120, 255));</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <widget class="QFrame" name="frame_2">

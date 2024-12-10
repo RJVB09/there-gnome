@@ -91,12 +91,27 @@ class Ui_MainWindow(object):
 
                 self.horizontalLayout_3.addWidget(self.frame)
 
+                self.verticalLayout_9 = QVBoxLayout()
+                self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+                self.toneDisplay = QLabel(self.centralwidget)
+                self.toneDisplay.setObjectName(u"toneDisplay")
+                self.toneDisplay.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);\n"
+        "font: bold 30pt \"Comic Sans MS\";\n"
+        "color: rgb(255, 255, 255);")
+                self.toneDisplay.setTextFormat(Qt.TextFormat.PlainText)
+                self.toneDisplay.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+                self.verticalLayout_9.addWidget(self.toneDisplay)
+
                 self.plot_widget = PlotWidget(self.centralwidget)
                 self.plot_widget.setObjectName(u"plot_widget")
                 self.plot_widget.setMinimumSize(QSize(650, 0))
                 self.plot_widget.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(65, 111, 120, 255));")
 
-                self.horizontalLayout_3.addWidget(self.plot_widget)
+                self.verticalLayout_9.addWidget(self.plot_widget)
+
+
+                self.horizontalLayout_3.addLayout(self.verticalLayout_9)
 
                 self.frame_2 = QFrame(self.centralwidget)
                 self.frame_2.setObjectName(u"frame_2")
@@ -277,14 +292,14 @@ class Ui_MainWindow(object):
         # setupUi
 
         def retranslateUi(self, MainWindow):
-                MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"THERE-GNOME 第一个版本 (Premium-edition)", None))
-                self.label_2.setText(QCoreApplication.translate("MainWindow", u"这个应用程序有三个星星在百度上， THERE-GNOME 第一个版本", None))
-                self.lengthLabel.setText(QCoreApplication.translate("MainWindow", u"Note length (mm) (وای فای رایگان)", None))
-                self.offsetLabel.setText(QCoreApplication.translate("MainWindow", u"Offset (إزاحة)", None))
-                self.invertedToggle.setText(QCoreApplication.translate("MainWindow", u"Inverted (倒了)", None))
-                self.rangeLabel.setText(QCoreApplication.translate("MainWindow", u"Range (mm) (范围)", None))
-                self.label.setText(QCoreApplication.translate("MainWindow", u"Volume falloff (音量)", None))
-                self.stopButton.setText(QCoreApplication.translate("MainWindow", u"Stop (停止)", None))
-                self.playButton.setText(QCoreApplication.translate("MainWindow", u"Start (开始)", None))
+                MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"THERE-GNOME (Premium-edition)", None))
+                self.label_2.setText(QCoreApplication.translate("MainWindow", u"THERE-GNOME", None))
+                self.lengthLabel.setText(QCoreApplication.translate("MainWindow", u"Note length (mm)", None))
+                self.offsetLabel.setText(QCoreApplication.translate("MainWindow", u"Offset", None))
+                self.invertedToggle.setText(QCoreApplication.translate("MainWindow", u"Inverted", None))
+                self.rangeLabel.setText(QCoreApplication.translate("MainWindow", u"Range (mm)", None))
+                self.label.setText(QCoreApplication.translate("MainWindow", u"Volume falloff", None))
+                self.stopButton.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
+                self.playButton.setText(QCoreApplication.translate("MainWindow", u"Start", None))
         # retranslateUi
 
