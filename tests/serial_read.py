@@ -23,19 +23,22 @@ def distance_to_pitch(distance, length, offset, flip):
         return int(distance / length + offset)
 
 
-while False:
+arduino = ser.Serial(port="COM13", baudrate=9600, timeout=0.1)
+
+while True:
 
     data = arduino.readline()
 
     decoded_data = data.decode("utf-8")
-    distance_mm = int(decoded_data)
+    distance_mm = decoded_data
+    distances_mm = [int(x) for x in decoded_data.split(" | ")]
     #data_list.append(int(decoded_data))
 
     #sinewave.set_pitch(int(distance_mm/20 - 1))
-    sinewave.set_pitch(18-int(distance_mm/20 - 1))
+    #sinewave.set_pitch(18-int(distance_mm/20 - 1))
     #sinewave.set_frequency(distance_mm + 200)
 
-    print(distance_mm)
+    print(distances_mm)
 
 
 # print(rm.list_resources())
