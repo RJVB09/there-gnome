@@ -24,7 +24,7 @@ class UserInterface(QtWidgets.QMainWindow):
         # Serial communication setup
         self.arduino = ser.Serial(port="COM13", baudrate=9600, timeout=0.1)
 
-        self.changepictures = False
+        self.changepictures = True
         self.volume_control = False
 
         # SineWave setup for sound generation
