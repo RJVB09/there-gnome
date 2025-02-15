@@ -21,7 +21,6 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QDoubleSpinBox, QFrame,
     QVBoxLayout, QWidget)
 
 from pyqtgraph import PlotWidget
-import there_gnome.ui.resources
 
 class Ui_MainWindow(object):
         def change_butt(self, butt):

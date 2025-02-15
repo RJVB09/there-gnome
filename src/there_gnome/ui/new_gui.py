@@ -21,7 +21,6 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QDoubleSpinBox, QFrame,
     QVBoxLayout, QWidget)
 
 from pyqtgraph import PlotWidget
-import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
